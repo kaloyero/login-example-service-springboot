@@ -1,3 +1,5 @@
+server:
+  port : 8080
 spring:
     datasource:
         url: jdbc:postgresql://localhost:5432/cotizacion_online?useSSL=false
@@ -17,8 +19,8 @@ spring:
         client:
           registration:
             google:
-              clientId: 5014057553-8gm9um6vnli3cle5rgigcdjpdrid14m9.apps.googleusercontent.com
-              clientSecret: tWZKVLxaD_ARWsriiiUFYoIk
+              clientId: 452954930526-a414th6qaimvnf2s45j03t8n5a93gr5a.apps.googleusercontent.com
+              clientSecret: ZuPbNc_qtgLQHQdTUQaHCZ3O
               redirectUriTemplate: "{baseUrl}/oauth2/callback/{registrationId}"
               scope:
                 - email
