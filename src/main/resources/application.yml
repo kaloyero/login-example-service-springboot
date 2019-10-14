@@ -1,6 +1,6 @@
 spring:
     datasource:
-        url: jdbc:postgresql://localhost:5432/spring_social?useSSL=false
+        url: jdbc:postgresql://localhost:5432/cotizacion_online?useSSL=false
         username: admin
         password: gerardcapo
 

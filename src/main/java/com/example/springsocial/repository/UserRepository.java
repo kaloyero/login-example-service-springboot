@@ -1,16 +1,27 @@
 package com.example.springsocial.repository;
 
 import com.example.springsocial.model.User;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import com.example.springsocial.model.UserInfo;
+import com.example.springsocial.model.UserRequest;
 
-import java.util.Optional;
+import java.util.List;
 
-@Repository
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UserRepository {
 
-    Optional<User> findByEmail(String email);
+    User create(UserRequest userRequest);
 
+    void update(UserRequest userRequest);
+
+    void delete(String email);
+
+    List<User> getAll();
+
+    List<UserInfo> getAllEnabled();
+
+    User findByIdOrUser(int userId, String mail);
     Boolean existsByEmail(String email);
+
+
+    void enabledDisabled(int userId);
 
 }

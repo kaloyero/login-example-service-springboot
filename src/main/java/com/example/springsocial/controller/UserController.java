@@ -1,7 +1,7 @@
 package com.example.springsocial.controller;
 
-import com.example.springsocial.exception.ResourceNotFoundException;
 import com.example.springsocial.model.User;
+import com.example.springsocial.model.UserInfo;
 import com.example.springsocial.repository.UserRepository;
 import com.example.springsocial.security.CurrentUser;
 import com.example.springsocial.security.UserPrincipal;
@@ -19,14 +19,14 @@ public class UserController {
     @GetMapping("/user/me")
     @PreAuthorize("hasRole('USER')")
     public User getCurrentUser(@CurrentUser UserPrincipal userPrincipal) {
-        return userRepository.findById(userPrincipal.getId())
-                .orElseThrow(() -> new ResourceNotFoundException("User", "id", userPrincipal.getId()));
+        return userRepository.findByIdOrUser(0,userPrincipal.getEmail());
     }
 
     @GetMapping("/user/doSomething")
     @PreAuthorize("hasRole('USER')")
-    public String doSomething(@CurrentUser UserPrincipal userPrincipal) {
-        return userPrincipal.getEmail();
+    public UserInfo doSomething(@CurrentUser UserPrincipal userPrincipal) {
+        UserInfo user = UserInfo.builder().mail(userPrincipal.getEmail()).build();
+        return user;
     }
 
 }
